@@ -102,12 +102,14 @@ function changeBackground(dayOrNight) {
 // Update weather container based on weather type
 function weatherContainer(type) {
   $(".weather-container").empty();
+  document.body.classList.remove("rain-theme-day");
   if (type == "13") {
     createSnowflakes(25);
   } else if (type == "11" || type == "10" || type == "09") {
-    const rainIntensity = type == "11" ? 100 : type == "10" ? 50 : 10;
+    const rainIntensity = type == "11" ? 200 : type == "10" ? 100 : 20;
     createRain(rainIntensity);
   }
+  createSnowflakes(25);
 }
 
 // Display weather information
@@ -183,7 +185,7 @@ function createSnowflakes(count) {
 
     // Random animation duration and delay
     const duration = Math.random() * 10 + 5; // Between 10s and 15s
-    const delay = Math.random() * 5; // Between 0s and 5s
+    const delay = Math.random() * 10; // Between 0s and 5s
     snowflake.style.animationDuration = `${duration}s`;
     snowflake.style.animationDelay = `${delay}s`;
 
@@ -198,6 +200,11 @@ function createSnowflakes(count) {
 // Create rain animation
 function createRain(count) {
   const container = document.querySelector(".container .weather-container");
+  const body = document.body;
+  if (body.className.includes("day-theme")) {
+    body.classList.remove("day-theme");
+    body.classList.add("rain-theme-day");
+  }
 
   for (let i = 0; i < count; i++) {
     const raindrop = document.createElement("i");
@@ -207,8 +214,8 @@ function createRain(count) {
     raindrop.style.left = `${Math.random() * 100}%`;
 
     // Random animation duration and delay
-    const duration = Math.random() * 10 + 1; // Between 1s and 3s
-    const delay = Math.random() * 1; // Between 0s and 1s
+    const duration = Math.random() * 2 + 1; // Between 1s and 3s
+    const delay = Math.random() * 10; // Between 0s and 10s
     raindrop.style.animationDuration = `${duration}s`;
     raindrop.style.animationDelay = `${delay}s`;
 

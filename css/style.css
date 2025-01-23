@@ -1,7 +1,7 @@
 :root {
   --gradient: linear-gradient(to bottom, #ffffff, #ffe139);
   --gradientbtn: radial-gradient(circle, #ff7e5f, #feb47b);
-  --fontSize: 1.8vmax;
+  --fontSize: 2.3vh;
 }
 html {
   overflow: hidden;
@@ -30,7 +30,11 @@ body {
   display: flex;
   flex-direction: row;
 }
+.rain-theme-day {
+  background: linear-gradient(to bottom, #1d5168, #9ffae3, #e7ff87);
+}
 
+/* Container for the main content */
 .container {
   text-align: center;
   display: flex;
@@ -41,20 +45,22 @@ body {
   height: 100vh;
 }
 
+/* Navigation bar styles */
 .navigation {
   text-align: center;
   display: flex;
   flex-wrap: wrap !important;
   justify-content: space-around;
   align-items: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
+/* Search bar styles */
 .search-bar {
   flex-grow: 2;
 }
 
+/* Weather card styles */
 .weather-card {
   background-color: transparent;
   display: block;
@@ -64,6 +70,7 @@ body {
   align-self: center;
 }
 
+/* Inner card styles for 3D effect */
 .card-inner {
   position: relative;
   width: 100%;
@@ -71,10 +78,12 @@ body {
   transform-style: preserve-3d;
 }
 
+/* Rotate card on hover */
 .weather-card:hover .card-inner {
   transform: rotateY(180deg);
 }
 
+/* Front and back of the card */
 .card-front,
 .card-back {
   position: absolute;
@@ -85,6 +94,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Front of the card */
 .card-front {
   background: rgba(255, 255, 255, 0.95);
   display: flex;
@@ -93,10 +103,12 @@ body {
   padding: 2%;
 }
 
+/* Back of the card */
 #card-back {
   transform: rotateY(180deg);
 }
 
+/* City input styles */
 #city-input {
   padding: 15px;
   margin: 10px 0;
@@ -105,18 +117,21 @@ body {
   border-radius: 5px;
 }
 
+/* Focus state for city input */
 #city-input:focus {
   outline: none;
   border-color: #e68c26;
   border-width: 2px;
 }
 
+/* Placeholder styles for city input */
 #city-input::placeholder {
   color: #aaa;
 }
+
+/* Button styles for city input */
 #city-input-btn {
   outline: none;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border: none;
   border-radius: 25px;
@@ -128,19 +143,21 @@ body {
   font-weight: 700;
   box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  transition: transform 200ms ease, -webkit-transform 200ms ease;
+  transition: transform 200ms ease;
 }
+
+/* Hover state for city input button */
 #city-input-btn:hover {
-  -webkit-transform: scale(0.95);
-  -ms-transform: scale(0.95);
   transform: scale(0.95);
 }
 
+/* Weather icon styles */
 .weather-icon {
   max-width: 15vmin;
   max-height: 100px;
 }
 
+/* Details section styles */
 #details {
   display: flex;
   justify-content: center;
@@ -149,24 +166,27 @@ body {
   margin-bottom: 5%;
 }
 
+/* Precipitation section styles */
 #precipitation {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
 }
 
+/* Temperature text styles */
 .temperature {
   font-weight: bold;
   margin: 8px 0;
 }
 
+/* Title styles */
 #title {
   font-weight: bold;
   text-decoration: none;
   color: inherit;
 }
 
-/* Foggy weather */
+/* Foggy weather background */
 .weather-foggy {
   background: linear-gradient(
       to bottom,
@@ -181,44 +201,43 @@ body {
     );
 }
 
-/* Partly cloudy */
+/* Partly cloudy weather background */
 .weather-partly-cloudy {
   background: linear-gradient(to bottom, #ffffff, #e0eafc, #c2dfff);
 }
 
-/* Rainy */
+/* Rainy weather background */
 .weather-rainy {
   background: linear-gradient(to bottom, #d3d3d3, #a9a9a9, #808080);
 }
 
-/* Snowy */
+/* Snowy weather background */
 .weather-snowy {
   background: linear-gradient(to bottom, #f0f8ff, #e6e6fa, #dcdcdc);
 }
 
-/* Default background */
+/* Default weather background */
 .weather-default {
   background: rgba(255, 255, 255, 0.95);
 }
+
 /* Base styles for the heading and button */
 .heading {
   transition: color 0.3s ease;
 }
 
-/* Day theme */
+/* Day theme styles */
 .day-theme {
   background: linear-gradient(to bottom, #ffdee9, rgb(239, 255, 228), #b5fffc);
 }
-
 .day-theme .heading {
   color: black;
 }
-
 .day-theme #city-input-btn {
   background: linear-gradient(to right, #ffb6c1, #ff69b4);
 }
 
-/* Night theme */
+/* Night theme styles */
 .night-theme {
   background: linear-gradient(
     to bottom,
@@ -227,11 +246,9 @@ body {
     rgb(255, 185, 150)
   );
 }
-
 .night-theme #title {
   color: white;
 }
-
 .night-theme #city-input-btn {
   background: linear-gradient(
     to right,
@@ -240,6 +257,7 @@ body {
     #2c5364
   );
 }
+
 /* Container for snowflakes */
 .weather-container {
   position: absolute;
@@ -256,7 +274,7 @@ body {
   z-index: 1; /* Ensures snowflakes appear above card content */
 }
 
-/* Individual snowflake */
+/* Individual snowflake styles */
 .snowflake {
   position: absolute;
   top: -50px;
@@ -264,33 +282,41 @@ body {
   opacity: 0.8;
   animation: fall linear infinite;
 }
+
+/* Individual raindrop styles */
 .raindrop {
   position: absolute;
   top: -10%;
-  color: rgb(179, 219, 241);
+  color: rgb(155, 213, 245);
   opacity: 0.7;
   animation-name: rain-fall;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
+/* Forecast section styles */
 .forecast {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   font-size: var(--fontSize);
 }
+
+/* Individual forecast element styles */
 .forecast-element {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+
+/* Container for toggle buttons */
 .container-toggle-buttons {
   display: flex;
   justify-content: center;
   padding: 32px;
 }
 
+/* Toggle button styles */
 .toggle-button {
   color: dimgray;
   font-weight: bold;
@@ -299,18 +325,23 @@ body {
   cursor: pointer;
 }
 
+/* Enabled unit button styles */
 .unit-enabled {
   background-color: rgb(255, 255, 181);
   cursor: default;
 }
+
+/* Right border none styles */
 .right-border-none {
   border-right: none;
 }
 
+/* Left border styles */
 .left-border {
   border-left: 1px solid rgb(106, 111, 102);
 }
 
+/* Responsive styles for screens with max-width 1300px */
 @media screen and (max-width: 1300px) {
   .weather-card {
     min-width: 40%;
@@ -319,6 +350,8 @@ body {
     width: 40%;
   }
 }
+
+/* Responsive styles for screens with max-width 1024px */
 @media screen and (max-width: 1024px) {
   .weather-card {
     min-width: 50%;
@@ -327,6 +360,8 @@ body {
     width: 60%;
   }
 }
+
+/* Responsive styles for screens with max-width 768px */
 @media screen and (max-width: 768px) {
   .weather-card {
     min-width: 60%;
@@ -335,12 +370,15 @@ body {
     width: 80%;
   }
 }
+
+/* Responsive styles for screens with max-width 400px */
 @media screen and (max-width: 400px) {
   :root {
     --fontSize: 2.3vmin;
   }
 }
 
+/* Responsive styles for screens with max-height 480px */
 @media screen and (max-height: 480px) {
   .card-front {
     padding: 0;
@@ -353,11 +391,14 @@ body {
   }
 }
 
+/* Keyframes for falling snowflakes */
 @keyframes fall {
   to {
     transform: translate(0, 100vh);
   }
 }
+
+/* Keyframes for falling raindrops */
 @keyframes rain-fall {
   to {
     transform: translateY(100vh);
