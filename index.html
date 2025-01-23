@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="height=device-height,width=device-width,initial-scale=1.0"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>Weather App</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <a id="title" href="">
+        <h1>Weather Report</h1>
+      </a>
+
+      <div class="navigation">
+        <div class="search-bar">
+          <input type="text" id="city-input" placeholder="Enter city name" />
+          <button
+            title="button"
+            id="city-input-btn"
+            onclick="weatherFn()"
+            type="submit"
+          >
+            <i class="fa-solid fa-search"></i>
+          </button>
+        </div>
+        <div class="container-toggle-buttons">
+          <!-- flex container places buttons in center -->
+          <span
+            id="celsius-button"
+            class="toggle-button right-border-none unit-enabled"
+          >
+            <!-- Holds  event handler for change of unit-->
+            °C </span
+          ><span id="fahrenheit-button" class="toggle-button left-border"
+            >°F</span
+          >
+        </div>
+      </div>
+      <div class="weather-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <div id="location">
+              <h2 id="city-name"></h2>
+              <h3 id="date"></h3>
+            </div>
+            <div id="details">
+              <img
+                class="weather-icon"
+                src="images/weather.png"
+                alt="Weather Icon"
+              />
+              <div>
+                <h1 class="temperature" id="temperature"></h1>
+                <h5 id="description" class="description"></h5>
+              </div>
+            </div>
+            <div id="precipitation">
+              <div id="wind-speed"></div>
+              <div id="humidity"></div>
+            </div>
+          </div>
+          <div class="card-back" id="card-back">
+            <div class="forecast"></div>
+          </div>
+        </div>
+      </div>
+      <div class="weather-container"></div>
+
+      <img src="images/tree.png" alt="Tree" class="tree" />
+      <img src="images/soil.png" alt="Soil" class="soil" />
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
