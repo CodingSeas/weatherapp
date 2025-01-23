@@ -1,7 +1,7 @@
 // API URLs and key
 const url = "https://api.openweathermap.org/data/2.5/forecast";
 const apiKey = "f00c38e0279b7bc85480c3fe775d518c";
-const url2 = "http://api.openweathermap.org/geo/1.0/direct";
+const url2 = "https://api.openweathermap.org/geo/1.0/direct";
 
 let tempType = "C"; // Default temperature type
 let dataFetched = {}; // Store fetched data
