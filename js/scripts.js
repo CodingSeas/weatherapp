@@ -87,26 +87,40 @@ function updateWeatherCard(weatherCode) {
 // Change background based on day or night
 function changeBackground(dayOrNight) {
   const body = document.body;
-
+  const celestial = document.querySelector(".container .celestial");
+  $(".celestial").empty();
   // Remove existing theme classes
   body.classList.remove("day-theme", "night-theme");
 
   // Add the appropriate theme class
   if (dayOrNight !== "n") {
     body.classList.add("day-theme");
+    const sun = document.createElement("img");
+    sun.classList.add("celestial-object");
+    sun.src = "images/sun.png";
+    celestial.appendChild(sun);
   } else {
     body.classList.add("night-theme");
+    const moon = document.createElement("img");
+    moon.classList.add("celestial-object");
+    moon.src = "images/moon.png";
+    celestial.appendChild(moon);
   }
 }
 
-// Update weather container based on weather type
+// Create clouds and Update weather container based on weather type
 function weatherContainer(type) {
   $(".weather-container").empty();
   document.body.classList.remove("rain-theme-day");
+  $(".container #title img").remove();
   if (type == "13") {
+    $(".celestial").empty();
+    makeClouds(); // Clouds for snowfall
     createSnowflakes(25);
   } else if (type == "11" || type == "10" || type == "09") {
+    $(".celestial").empty();
     const rainIntensity = type == "11" ? 200 : type == "10" ? 100 : 20;
+    makeClouds(type == "11" ? 2 : 1);
     createRain(rainIntensity);
   }
 }
@@ -120,10 +134,10 @@ function weatherShowFn(data, cName) {
   $("#temperature").html(tempChange(data.list[0].main.temp, tempType));
   $("#description").text(data.list[0].weather[0].main);
   $("#wind-speed").html(
-    `<i class="fa-solid fa-wind"></i> ${data.list[0].wind.speed} m/s`
+    `<i class="fa fa-solid fa-wind"></i> ${data.list[0].wind.speed} m/s`
   ); // Adding wind icon
   $("#humidity").html(
-    `<i class="fa-solid fa-umbrella"></i> ${data.list[0].main.humidity}%`
+    `<i class="fa fa-solid fa-umbrella"></i> ${data.list[0].main.humidity}%`
   );
   $(".weather-icon").attr(
     "src",
@@ -154,7 +168,7 @@ function weatherForecast(data) {
     forecast_element_temp.innerHTML = tempChange(data.list[i].main.temp);
     forecast_element_temp.classList.add("temperature");
 
-    forecast_element_humidity.innerHTML = `<i class="fa-solid fa-umbrella"></i> ${data.list[i].main.humidity}%`;
+    forecast_element_humidity.innerHTML = `<i class="fa fa-solid fa-umbrella"></i> ${data.list[i].main.humidity}%`;
 
     const date = new Date(data.list[i].dt_txt);
     const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -169,6 +183,30 @@ function weatherForecast(data) {
     forecast_element.classList.add("forecast-element");
     forecast_container.appendChild(forecast_element);
   }
+}
+
+// Making Clouds for rain and snowfall
+function makeClouds(intensity = 1) {
+  const container = document.querySelector(".container #title");
+  const cloud = document.createElement("img");
+  const cloud2 = document.createElement("img");
+  const cloud3 = document.createElement("img");
+  if (intensity == 2) {
+    cloud.src = "images/cloud2.png";
+    cloud2.src = "images/cloud2.png";
+    cloud3.src = "images/cloud2.png";
+  } else {
+    cloud.src = "images/cloud.png";
+    cloud2.src = "images/cloud.png";
+    cloud3.src = "images/cloud.png";
+  }
+
+  cloud2.style.left = "30%";
+  cloud3.style.right = "30%";
+  cloud3.style.bottom = "88%";
+  container.appendChild(cloud);
+  container.appendChild(cloud2);
+  container.appendChild(cloud3);
 }
 
 // Create snowflakes animation

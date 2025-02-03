@@ -15,13 +15,19 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Fredericka+the+Great&display=swap"
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
     />
     <link
+      href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%221em%22 font-size=%2280%22>☁️</text></svg>"
     />
     <title>Weather App</title>
   </head>
@@ -41,7 +47,7 @@
             onclick="weatherFn()"
             type="submit"
           >
-            <i class="fa-solid fa-search"></i>
+            <i class="fa fa-solid fa-search"></i>
           </button>
         </div>
         <div class="container-toggle-buttons">
@@ -86,6 +92,7 @@
         </div>
       </div>
       <div class="weather-container"></div>
+      <div class="celestial"></div>
 
       <img src="images/tree.png" alt="Tree" class="tree" />
       <img src="images/soil.png" alt="Soil" class="soil" />

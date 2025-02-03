@@ -8,13 +8,13 @@ html {
 }
 body {
   overflow: auto;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Averia Serif Libre", serif;
   background: var(--gradient);
   min-height: 100vh;
   margin: 0;
 }
 .soil {
-  height: 15%;
+  height: 12%;
   width: 100%;
   z-index: 2;
 }
@@ -74,7 +74,7 @@ body {
 .card-inner {
   position: relative;
   width: 100%;
-  transition: transform 0.6s;
+  transition: transform 0.01s;
   transform-style: preserve-3d;
 }
 
@@ -181,9 +181,19 @@ body {
 
 /* Title styles */
 #title {
+  font-family: "Agu Display", serif;
+  text-transform: uppercase;
   font-weight: bold;
   text-decoration: none;
   color: inherit;
+}
+#title img {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 20%;
+  z-index: -1;
+  bottom: 90%;
 }
 
 /* Foggy weather background */
@@ -273,6 +283,26 @@ body {
   overflow: hidden;
   z-index: 1; /* Ensures snowflakes appear above card content */
 }
+.celestial {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  pointer-events: none; /* Allows interaction with underlying elements */
+  overflow: hidden;
+  z-index: -2; /* Ensures celestial appear below card content */
+}
+.celestial-object {
+  top: 10%;
+  position: relative;
+  height: 20%;
+  width: auto;
+  left: 10%;
+  animation: move-celestial 550s linear infinite;
+}
 
 /* Individual snowflake styles */
 .snowflake {
@@ -289,7 +319,7 @@ body {
   top: -10%;
   color: rgb(155, 213, 245);
   opacity: 0.7;
-  animation-name: rain-fall;
+  animation-name: fall;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -391,16 +421,15 @@ body {
   }
 }
 
-/* Keyframes for falling snowflakes */
+/* Keyframes for falling rainfall & snowflakes */
 @keyframes fall {
   to {
-    transform: translate(0, 100vh);
+    transform: translateY(100vh);
   }
 }
 
-/* Keyframes for falling raindrops */
-@keyframes rain-fall {
+@keyframes move-celestial {
   to {
-    transform: translateY(100vh);
+    transform: rotateZ(360deg);
   }
 }
